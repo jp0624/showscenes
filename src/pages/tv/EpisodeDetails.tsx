@@ -24,7 +24,7 @@ import { tmdbBackdrop } from "../../utils/tmdbImage";
 
 import Surface from "../../components/ui/Surface";
 import SectionHeader from "../../components/ui/SectionHeader";
-import CastCarousel from "../../components/media/CastCarousel";
+import CastCarousel from "../../components/media/carousels/CastCarousel";
 import TrailerCarousel from "../../components/media/carousels/TrailerCarousel";
 import ImageGallery from "../../components/media/info/ImageGallery";
 

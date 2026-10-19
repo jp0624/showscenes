@@ -42,7 +42,7 @@ export default function SearchPage() {
 	const suggestions = useAISuggestions(query);
 	const preload = useTmdbPreload((item: MultiResult) => {
 		if (!item) return;
-		return import("../../services/api").then((m) => {
+		return import("../../services/api").then<unknown>((m) => {
 			if (item.media_type === "movie") return m.getMovie(item.id);
 			if (item.media_type === "tv") return m.getTv(item.id);
 			return m.getPerson(item.id);
@@ -255,7 +255,7 @@ export default function SearchPage() {
 						<SectionHeader title="Movies" />
 						<div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 							{movies.map((m) => (
-								<MovieCard key={m.id} movie={m as any} mediaType="movie" />
+								<MovieCard key={m.id} item={m as any} mediaType="movie" />
 							))}
 						</div>
 					</Surface>

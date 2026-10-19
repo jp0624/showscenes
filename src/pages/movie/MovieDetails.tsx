@@ -1,5 +1,5 @@
 // src/pages/Movie/MovieDetails.tsx
-import { useMemo } from "react";
+
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -88,7 +88,7 @@ export default function MovieDetails() {
 			animate={{ opacity: 1 }}
 			className="min-h-screen bg-background pb-10"
 		>
-			<MovieHero movie={movie} images={images} />
+			<MovieHero movie={movie} images={images ?? {}} />
 
 			<section className="mx-auto max-w-7xl px-4 mt-10 space-y-10">
 				<Surface>
@@ -140,10 +140,10 @@ export default function MovieDetails() {
 					</Surface>
 				)}
 
-				{reviews?.results?.length > 0 && (
+				{(reviews?.results?.length ?? 0) > 0 && (
 					<Surface>
 						<SectionHeader title="User Reviews" eyebrow="Reviews" />
-						<ReviewList reviews={reviews.results.slice(0, 4)} />
+						<ReviewList reviews={reviews?.results?.slice(0, 4) ?? []} />
 					</Surface>
 				)}
 
@@ -157,6 +157,7 @@ export default function MovieDetails() {
 					</Surface>
 				)}
 			</section>
-		</motion.div>
+		<div className="max-w-7xl mx-auto px-4">{providers && <WatchProviders providers={providers} />}</div>
+</motion.div>
 	);
 }

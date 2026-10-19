@@ -1,14 +1,7 @@
-// src/pages/Home/Home.tsx
-import { useState, useEffect } from "react";
-
-import HomeHero from "./HomeHero";
-import HomeGrid from "./HomeGrid";
-
-export default function Home() {
-	return (
-		<div className="min-h-screen pt-20">
-			<HomeHero />
-			<HomeGrid />
-		</div>
-	);
-}
+import {useState,useEffect} from 'react';
+import HomeHero, {type Mode} from './HomeHero';
+import HomeGrid from './HomeGrid';
+import {getTrending,getTrendingTv} from '../../services/api';
+import {tmdbBackdrop} from '../../utils/tmdbImage';
+import type {HeroSlide} from '../../components/layout/Hero/ParallaxHero';
+export default function Home(){const [mode,setMode]=useState<Mode>('movie');const [query,setQuery]=useState('');const [search,setSearch]=useState('');const [slides,setSlides]=useState<HeroSlide[]>([]);const [error,setError]=useState('');useEffect(()=>{const t=setTimeout(()=>setSearch(query),300);return()=>clearTimeout(t)},[query]);useEffect(()=>{let stale=false;setError('');(mode==='movie'?getTrending():getTrendingTv()).then(data=>{if(stale)return;setSlides(data.results.slice(0,5).map(item=>({id:item.id,backdropUrl:tmdbBackdrop(item.backdrop_path??undefined),title:'title'in item?item.title:item.name,overview:item.overview,score:item.vote_average,mediaType:mode,link:`/${mode}/${item.id}`})))}).catch(()=>{if(!stale)setError('Movie data is unavailable. Please check the TMDB API configuration and try again.')});return()=>{stale=true}},[mode]);return <main className="min-h-screen"><HomeHero slides={slides}/><section className="max-w-7xl mx-auto px-5 py-8"><div className="flex flex-wrap gap-4 items-center"><h1 className="text-2xl font-bold">Discover films & television</h1><label>Browse <select aria-label="Media type" value={mode} onChange={e=>setMode(e.target.value as Mode)}><option value="movie">Movies</option><option value="tv">TV Shows</option></select></label><input className="border border-token rounded px-3 py-2 bg-surface" aria-label="Search titles" placeholder="Search titles…" value={query} onChange={e=>setQuery(e.target.value)}/></div>{error&&<p role="alert" className="mt-4 text-red-400">{error}</p>}<HomeGrid key={`${mode}:${search}`} mode={mode} query={search}/><p className="text-xs text-muted mt-8">This product uses the TMDB API but is not endorsed or certified by TMDB.</p></section></main>}

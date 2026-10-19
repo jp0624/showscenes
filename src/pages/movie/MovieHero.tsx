@@ -1,6 +1,6 @@
 // src/pages/Movie/MovieHero.tsx
 import ParallaxHero, {
-	HeroSlide,
+	type HeroSlide,
 } from "../../components/layout/Hero/ParallaxHero";
 import { tmdbBackdrop, tmdbPoster } from "../../utils/tmdbImage";
 
@@ -48,7 +48,7 @@ export default function MovieHero({ movie, images }: Props) {
 
 	return (
 		<ParallaxHero slides={slides} autoAdvanceMs={6000} height="min-h-[60vh]">
-			{({ slide, index }) => (
+			{({ slide }) => (
 				<div className="flex flex-col gap-6 sm:flex-row sm:gap-10">
 					{/* Poster */}
 					{slide.posterUrl && (

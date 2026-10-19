@@ -1,8 +1,8 @@
 // src/components/media/EpisodeCard.tsx
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import type { Episode } from "../../types/Tv";
-import { tmdbBackdrop } from "../../utils/tmdbImage";
+import type { Episode } from "../../../types/Tv";
+import { tmdbBackdrop } from "../../../utils/tmdbImage";
 
 interface Props {
 	showId: number;

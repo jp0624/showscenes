@@ -1,6 +1,6 @@
 // src/pages/Tv/TvHero.tsx
 import ParallaxHero, {
-	HeroSlide,
+	type HeroSlide,
 } from "../../components/layout/Hero/ParallaxHero";
 import { tmdbBackdrop, tmdbPoster } from "../../utils/tmdbImage";
 

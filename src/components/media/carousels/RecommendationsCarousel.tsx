@@ -17,7 +17,7 @@ export default function RecommendationsCarousel({ items, mediaType }: Props) {
 			itemWidth={150}
 			renderItem={(item) =>
 				mediaType === "movie" ? (
-					<MovieCard movie={item} />
+					<MovieCard item={item} />
 				) : (
 					<TvCard show={item} />
 				)

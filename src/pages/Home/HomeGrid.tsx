@@ -11,7 +11,7 @@ import {
 	searchTv,
 } from "../../services/api";
 
-import MovieGrid from "../../components/media/MovieGrid";
+import MovieGrid from "../../components/media/lists/MovieGrid";
 import MovieSkeleton from "../../components/media/MovieSkeleton";
 
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
@@ -92,7 +92,7 @@ export default function HomeGrid({ mode, query }: HomeGridProps) {
 		return () => {
 			cancelled = true;
 		};
-	}, [page, mode, query, hasMore, isInitialLoadDone]);
+	}, [page, mode, query]);
 
 	// Infinite scroll
 	useInfiniteScroll(() => {

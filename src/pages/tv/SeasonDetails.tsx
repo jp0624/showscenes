@@ -18,7 +18,7 @@ import { tmdbBackdrop, tmdbPoster } from "../../utils/tmdbImage";
 
 import Surface from "../../components/ui/Surface";
 import SectionHeader from "../../components/ui/SectionHeader";
-import CastCarousel from "../../components/media/CastCarousel";
+import CastCarousel from "../../components/media/carousels/CastCarousel";
 import EpisodeCard from "../../components/media/cards/EpisodeCard";
 import ImageGallery from "../../components/media/info/ImageGallery";
 import ParallaxHero, {

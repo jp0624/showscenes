@@ -69,7 +69,7 @@ export default function TvDetails() {
 			animate={{ opacity: 1 }}
 			className="min-h-screen bg-background pb-10"
 		>
-			<TvHero show={show} images={images} />
+			<TvHero show={show} images={images ?? {}} />
 
 			<section className="mx-auto max-w-7xl px-4 mt-10 space-y-10">
 				<Surface>
@@ -87,19 +87,19 @@ export default function TvDetails() {
 								{show.last_air_date}
 							</p>
 						)}
-						{show.genres?.length > 0 && (
+						{(show.genres?.length ?? 0) > 0 && (
 							<p>
 								<span className="font-medium text-foreground">Genres: </span>
-								{show.genres.map((g: any) => g.name).join(", ")}
+								{show.genres?.map((g: any) => g.name).join(", ")}
 							</p>
 						)}
 					</div>
 				</Surface>
 
-				{show.seasons?.length > 0 && (
+				{(show.seasons?.length ?? 0) > 0 && (
 					<Surface>
 						<SectionHeader title="Seasons" eyebrow="Episodes" />
-						<SeasonCarousel seasons={show.seasons} tvId={tvId} />
+						<SeasonCarousel seasons={show.seasons ?? []} tvId={tvId} />
 					</Surface>
 				)}
 
@@ -128,10 +128,10 @@ export default function TvDetails() {
 					</Surface>
 				)}
 
-				{reviews?.results?.length > 0 && (
+				{(reviews?.results?.length ?? 0) > 0 && (
 					<Surface>
 						<SectionHeader title="Reviews" eyebrow="What People Say" />
-						<ReviewList reviews={reviews.results.slice(0, 4)} />
+						<ReviewList reviews={reviews?.results?.slice(0, 4) ?? []} />
 					</Surface>
 				)}
 
@@ -142,6 +142,7 @@ export default function TvDetails() {
 					</Surface>
 				)}
 			</section>
-		</motion.div>
+		<div className="max-w-7xl mx-auto px-4">{providers && <WatchProviders providers={providers} />}</div>
+</motion.div>
 	);
 }

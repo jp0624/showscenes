@@ -1,5 +1,5 @@
 // src/components/ui/Surface.tsx
-import type { ReactNode } from "react";
+import type { ReactNode, JSX } from "react";
 
 interface SurfaceProps {
 	children: ReactNode;

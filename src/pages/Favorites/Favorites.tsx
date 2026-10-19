@@ -2,14 +2,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
-import { useMovie } from "../contexts/MovieContext";
-import type { Movie } from "../types/Movie";
-import { getMovie } from "../services/api";
+import { useMovie } from "../../contexts/MovieContext";
+import type { Movie } from "../../types/Movie";
+import { getMovie } from "../../services/api";
 
-import Surface from "../components/ui/Surface";
-import SectionHeader from "../components/ui/SectionHeader";
-import MovieGrid from "../components/media/lists/MovieGrid";
-import MovieSkeleton from "../components/media/MovieSkeleton";
+import Surface from "../../components/ui/Surface";
+import SectionHeader from "../../components/ui/SectionHeader";
+import MovieGrid from "../../components/media/lists/MovieGrid";
+import MovieSkeleton from "../../components/media/MovieSkeleton";
 
 export default function Favorites() {
 	const { favorites, ratings } = useMovie(); // favorites: number[], ratings: Record<number, number>

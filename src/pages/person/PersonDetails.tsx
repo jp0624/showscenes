@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import { useTmdbResource } from "../../hooks/useTmdbResource";
-import { getPerson, getPersonImages } from "../../services/api";
+import { getPerson, getPersonImages, getPersonCombinedCredits } from "../../services/api";
 
 import Surface from "../../components/ui/Surface";
 import SectionHeader from "../../components/ui/SectionHeader";
@@ -23,9 +23,9 @@ export default function PersonDetails() {
 		data: person,
 		loading,
 		error,
-	} = useTmdbResource(() => getPerson(personId));
-	const { data: credits } = useTmdbResource(() => getPersonCredits(personId));
-	const { data: images } = useTmdbResource(() => getPersonImages(personId));
+	} = useTmdbResource(() => getPerson(personId), [personId]);
+	const { data: credits } = useTmdbResource(() => getPersonCombinedCredits(personId), [personId]);
+	const { data: images } = useTmdbResource(() => getPersonImages(personId), [personId]);
 
 	/* ----------------- HERO ----------------- */
 	const heroSlides: HeroSlide[] = useMemo(() => {
@@ -91,10 +91,10 @@ export default function PersonDetails() {
 				)}
 
 				{/* ACTING TIMELINE */}
-				{credits?.cast?.length > 0 && (
+				{(credits?.cast?.length ?? 0) > 0 && (
 					<Surface>
 						<SectionHeader title="Acting Career" eyebrow="Filmography" />
-						<PersonActingTimeline cast={credits.cast} />
+						<PersonActingTimeline credits={credits?.cast ?? []} />
 					</Surface>
 				)}
 			</section>

@@ -1,20 +1,20 @@
 // src/components/media/MovieCard.tsx
 import { Link } from "react-router-dom";
-import type { Movie } from "../../types/Movie";
-import type { TvShow } from "../../types/Tv";
-import { tmdbPoster } from "../../utils/tmdbImage";
-import { preload } from "../../hooks/useTmdbPreload";
-import { getMovie, getTv } from "../../services/api";
+import type { Movie } from "../../../types/Movie";
+import type { TvShow } from "../../../types/Tv";
+import { tmdbPoster } from "../../../utils/tmdbImage";
+import { preload } from "../../../hooks/useTmdbPreload";
+import { getMovie, getTv } from "../../../services/api";
 
 type MediaType = "movie" | "tv";
 
 interface Props {
 	item: Movie | TvShow;
-	mediaType: MediaType;
+	mediaType?: MediaType;
 	className?: string;
 }
 
-export default function MovieCard({ item, mediaType, className = "" }: Props) {
+export default function MovieCard({ item, mediaType = "movie", className = "" }: Props) {
 	const id = item.id;
 	const title =
 		mediaType === "movie"

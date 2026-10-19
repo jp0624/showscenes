@@ -1,5 +1,5 @@
 // src/contexts/Providers.tsx
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { ThemeProvider } from "./ThemeContext";
 import { SettingsProvider } from "./SettingsContext";
 import { MovieProvider } from "./MovieContext";

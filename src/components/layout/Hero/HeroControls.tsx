@@ -1,5 +1,5 @@
 // src/components/layout/Hero/HeroControls.tsx
-import React from "react";
+
 
 interface HeroControlsProps {
 	total: number;

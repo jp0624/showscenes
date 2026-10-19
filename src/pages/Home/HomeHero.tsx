@@ -1,6 +1,6 @@
 // src/pages/Home/HomeHero.tsx
 import ParallaxHero, {
-	HeroSlide,
+	type HeroSlide,
 } from "../../components/layout/Hero/ParallaxHero";
 
 interface Props {
@@ -52,3 +52,5 @@ export default function HomeHero({ slides }: Props) {
 		</ParallaxHero>
 	);
 }
+
+export type Mode = "movie" | "tv";

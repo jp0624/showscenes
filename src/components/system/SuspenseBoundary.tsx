@@ -1,6 +1,6 @@
 // src/components/system/SuspenseBoundary.tsx
-import { Suspense, ReactNode } from "react";
-import PageLoader from "./PageLoader";
+import { Suspense, type ReactNode } from "react";
+import PageLoader from "./Pageloader";
 
 export default function SuspenseBoundary({
 	children,

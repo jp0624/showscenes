@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 
 interface MovieCtx {
 	favorites: number[];
+ ratings: Record<number,number>;
 	addFavorite: (id: number) => void;
 	removeFavorite: (id: number) => void;
 }
@@ -27,6 +28,7 @@ export function MovieProvider({ children }: { children: React.ReactNode }) {
 		<MovieContext.Provider
 			value={{
 				favorites,
+ ratings: {},
 				addFavorite: (id) => save([...favorites, id]),
 				removeFavorite: (id) => save(favorites.filter((x) => x !== id)),
 			}}
@@ -41,3 +43,5 @@ export function useMovieContext() {
 	if (!ctx) throw new Error("useMovieContext must be inside <MovieProvider>");
 	return ctx;
 }
+
+export const useMovie = useMovieContext;

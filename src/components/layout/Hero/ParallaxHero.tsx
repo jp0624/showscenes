@@ -1,10 +1,10 @@
 // src/components/layout/Hero/ParallaxHero.tsx
-import React, {
+import {
 	useState,
 	useEffect,
 	useRef,
 	useCallback,
-	ReactNode,
+	type ReactNode,
 } from "react";
 import HeroSlide from "./HeroSlide";
 import HeroControls from "./HeroControls";
@@ -12,20 +12,23 @@ import HeroControls from "./HeroControls";
 // dynamic import for ColorThief
 let ColorThief: any;
 
-interface SlideData {
+export interface HeroSlide {
 	id: string | number;
 	backdropUrl: string;
+	title?: string; overview?: string; year?: string; score?: number; posterUrl?: string; link?: string; mediaType?: "movie" | "tv" | "person" | "search";
 }
 
 interface ParallaxHeroProps {
-	slides: SlideData[];
+	slides: HeroSlide[];
 	autoAdvanceMs?: number;
-	children: (data: { slide: SlideData; index: number }) => ReactNode;
+ height?: string;
+	children: (data: { slide: HeroSlide; index: number }) => ReactNode;
 }
 
 export default function ParallaxHero({
 	slides,
 	autoAdvanceMs = 6000,
+ height,
 	children,
 }: ParallaxHeroProps) {
 	const [index, setIndex] = useState(0);
@@ -90,6 +93,7 @@ export default function ParallaxHero({
     ------------------------------------------ */
 	const startAuto = useCallback(() => {
 		if (intervalRef.current) clearInterval(intervalRef.current);
+ if (slides.length < 2) return;
 		intervalRef.current = window.setInterval(() => {
 			setIndex((i) => (i + 1) % slides.length);
 		}, autoAdvanceMs);
@@ -145,7 +149,7 @@ export default function ParallaxHero({
 			onTouchMove={(e) => onMove(e.touches[0].clientX)}
 			onTouchEnd={onEnd}
 		>
-			<div className="relative w-full h-[65vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh]">
+			<div className={`relative w-full ${height || "h-[65vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh]"}`}>
 				{slides.map((slide, i) => (
 					<HeroSlide
 						key={slide.id}

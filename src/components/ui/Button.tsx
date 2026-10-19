@@ -1,39 +1,4 @@
-// src/components/ui/Button.tsx
-import React from "react";
-import { Link } from "react-router-dom";
-
-interface BaseProps {
-	children: React.ReactNode;
-	className?: string;
-}
-
-type ButtonProps = BaseProps &
-	(
-		| (React.ButtonHTMLAttributes<HTMLButtonElement> & { to?: never })
-		| ({ to: string } & React.AnchorHTMLAttributes<HTMLAnchorElement>)
-	);
-
-export default function Button({
-	children,
-	className = "",
-	...props
-}: ButtonProps) {
-	const base =
-		"inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition bg-foreground text-background hover:opacity-90";
-
-	// Link
-	if ("to" in props && props.to) {
-		return (
-			<Link {...props} className={`${base} ${className}`}>
-				{children}
-			</Link>
-		);
-	}
-
-	// Button
-	return (
-		<button {...props} className={`${base} ${className}`}>
-			{children}
-		</button>
-	);
-}
+import type {ReactNode,ButtonHTMLAttributes,AnchorHTMLAttributes} from 'react';
+import {Link} from 'react-router-dom';
+type Props={children:ReactNode;className?:string}&(ButtonHTMLAttributes<HTMLButtonElement>&{to?:never}|AnchorHTMLAttributes<HTMLAnchorElement>&{to:string});
+export default function Button(props:Props){const cls=`inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition bg-foreground text-background hover:opacity-90 ${props.className??''}`;if(typeof props.to==='string'){const {to,children,className:_,...rest}=props;return <Link to={to} {...rest} className={cls}>{children}</Link>}const {children,className:_,...rest}=props as ButtonHTMLAttributes<HTMLButtonElement>;return <button {...rest} className={cls}>{children}</button>}

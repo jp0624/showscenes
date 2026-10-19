@@ -12,18 +12,18 @@ import Home from "./pages/Home/Home";
 import Favorites from "./pages/Favorites/Favorites";
 
 // Movie
-import MovieDetails from "./pages/Movie/MovieDetails";
+import MovieDetails from "./pages/movie/MovieDetails";
 
 // TV
-import TvDetails from "./pages/Tv/TvDetails";
-import SeasonDetails from "./pages/Tv/SeasonDetails";
-import EpisodeDetails from "./pages/Tv/EpisodeDetails";
+import TvDetails from "./pages/tv/TvDetails";
+import SeasonDetails from "./pages/tv/SeasonDetails";
+import EpisodeDetails from "./pages/tv/EpisodeDetails";
 
 // Person
-import PersonDetails from "./pages/Person/PersonDetails";
+import PersonDetails from "./pages/person/PersonDetails";
 
 // Search
-import SearchPage from "./pages/Search/SearchPage";
+import SearchPage from "./pages/search/SearchPage";
 
 export default function App() {
 	return (

@@ -3,10 +3,11 @@ import MovieCard from "../cards/MovieCard";
 
 interface Props {
 	movies: any[];
+ mediaType?: "movie" | "tv";
 	className?: string;
 }
 
-export default function MovieGrid({ movies, className = "" }: Props) {
+export default function MovieGrid({ movies, mediaType = "movie", className = "" }: Props) {
 	if (!Array.isArray(movies)) return null;
 
 	return (
@@ -15,7 +16,7 @@ export default function MovieGrid({ movies, className = "" }: Props) {
 				"grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 " + className
 			}
 		>
-			{movies.map((m) => (m ? <MovieCard key={m.id} movie={m} /> : null))}
+			{movies.map((m) => (m ? <MovieCard key={m.id} item={m} mediaType={mediaType} /> : null))}
 		</div>
 	);
 }

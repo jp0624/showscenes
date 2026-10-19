@@ -22,3 +22,5 @@ export function preload(fetcher: () => Promise<any>) {
 export function getPreloaded(id: number) {
 	return cache.get(id);
 }
+
+export function useTmdbPreload<TArgs extends unknown[]>(fetcher:(...args:TArgs)=>Promise<unknown>|undefined){ return (...args:TArgs)=>preload(()=>Promise.resolve(fetcher(...args))); }

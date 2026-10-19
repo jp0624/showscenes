@@ -1,5 +1,5 @@
 // src/components/ui/Badge.tsx
-import React from "react";
+
 
 interface BadgeProps {
 	children: React.ReactNode;

@@ -382,3 +382,7 @@ If you publish it publicly, please:
 
 - Keep TMDB attribution intact
 - Do not expose your **real** TMDB API key in public repos
+
+## Deployment repair (October 2026)
+
+Restored Linux-safe imports after the directory reorganization, React 19 type imports, carousel and hero contracts, the home screen data flow, provider display, per-resource caching and SPA route rewrites. `npm run build` retains strict TypeScript checks. Configure `VITE_TMDB_KEY` as a TMDB read token for live data. The home screen displays a visible API-configuration error if data cannot load. Vercel builds to `dist` with the Vite preset.

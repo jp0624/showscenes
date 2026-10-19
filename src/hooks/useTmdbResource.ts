@@ -1,5 +1,5 @@
 // src/hooks/useTmdbResource.ts
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 import useTmdbCachedFetch from "./useTmdbCachedFetch";
 
 export function useTmdbResource<T>(
@@ -8,7 +8,8 @@ export function useTmdbResource<T>(
 ) {
 	const { get, set } = useTmdbCachedFetch<T>();
 
-	const cacheKey = JSON.stringify(keys);
+	const instanceId = useId();
+ const cacheKey = instanceId + JSON.stringify(keys);
 
 	const [data, setData] = useState<T | null>(() => get(cacheKey) ?? null);
 	const [loading, setLoading] = useState(!data);
@@ -44,7 +45,7 @@ export function useTmdbResource<T>(
 		}
 
 		load();
-		return () => (cancelled = true);
+		return () => { cancelled = true; };
 	}, keys);
 
 	return { data, loading, error };

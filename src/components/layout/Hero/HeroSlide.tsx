@@ -1,5 +1,5 @@
 // src/components/layout/Hero/HeroSlide.tsx
-import React from "react";
+
 
 interface HeroSlideProps {
 	image: string;
@@ -14,7 +14,6 @@ export default function HeroSlide({
 	image,
 	color,
 	dark,
-	index,
 	isActive,
 	children,
 }: HeroSlideProps) {
