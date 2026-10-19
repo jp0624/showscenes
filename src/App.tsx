@@ -1,5 +1,5 @@
 // src/App.tsx
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/layout/NavBar";
 import SuspenseBoundary from "./components/system/SuspenseBoundary";
@@ -27,7 +27,7 @@ import SearchPage from "./pages/search/SearchPage";
 
 export default function App() {
 	return (
-		<BrowserRouter>
+		<>
 			<div className="min-h-screen bg-background text-foreground">
 				<NavBar />
 
@@ -63,6 +63,6 @@ export default function App() {
 					</SuspenseBoundary>
 				</ErrorBoundary>
 			</div>
-		</BrowserRouter>
+		</>
 	);
 }
