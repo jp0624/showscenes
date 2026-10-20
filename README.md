@@ -1,4 +1,4 @@
-# 🎬 Cinematic Movie & TV Explorer
+# Showscenes
 
 A Netflix/Marvel-inspired movie and TV browser built with **React + TypeScript + Vite + Tailwind CSS v4** and powered by **The Movie Database (TMDB)** API.
 
@@ -17,7 +17,7 @@ This app lets you:
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Framework:** React 18 + TypeScript
 - **Bundler:** Vite
@@ -31,7 +31,7 @@ This app lets you:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 src/
@@ -103,7 +103,7 @@ src/
 
 ---
 
-## 🔑 Environment Setup
+## Environment Setup
 
 This app uses a **TMDB v3 API (Bearer token)** for all requests.
 
@@ -146,7 +146,7 @@ This app uses a **TMDB v3 API (Bearer token)** for all requests.
 
 ---
 
-## 🎛 Theming & Design System
+## Theming & Design System
 
 This project uses **Tailwind CSS v4** with the `@theme` feature and a `data-theme` attribute on `<html>` to control dark/light mode.
 
@@ -172,7 +172,7 @@ The **NavBar** includes a **macOS-style pill switch** (ThemeToggle) on the right
 
 ## ⭐ Core Features
 
-### 🏠 Home Page (`/`)
+### Home Page (`/`)
 
 - Toggle **Movies / TV Shows** with a pill switch
 - **Search** with debounced input
@@ -198,7 +198,7 @@ The **NavBar** includes a **macOS-style pill switch** (ThemeToggle) on the right
 - Sorts favorites by **personal rating** (highest first)
 - Uses the same `MovieCard` + `MovieGrid` layout for consistency
 
-### 🎬 Movie Details (`/movie/:id`)
+### Movie Details (`/movie/:id`)
 
 Includes:
 
@@ -213,7 +213,7 @@ Includes:
 - **Recommendations row** (`RecommendationsRow`)
   - “You may also like…” horizontally scrollable carousel
 
-### 📺 TV Show Details (`/tv/:id`)
+### TV Show Details (`/tv/:id`)
 
 Includes:
 
@@ -227,7 +227,7 @@ Includes:
 - **Seasons carousel** (`SeasonCarousel`):
   - Each season card is clickable → `/tv/:id/season/:seasonNumber`
 
-### 📅 Season Details (`/tv/:id/season/:seasonNumber`)
+### Season Details (`/tv/:id/season/:seasonNumber`)
 
 - Season poster, name, air date, episode count, overview
 - Ability to jump between **seasons** for the same show
@@ -235,14 +235,14 @@ Includes:
   - Still image, number, title, air date, short overview
   - Click → `/tv/:id/season/:seasonNumber/episode/:episodeNumber`
 
-### 🎞 Episode Details (`/tv/:id/season/:seasonNumber/episode/:episodeNumber`)
+### Episode Details (`/tv/:id/season/:seasonNumber/episode/:episodeNumber`)
 
 - Episode hero section with still image and metadata
 - Overview, air date, runtime, rating
 - Guest stars + main cast
 - Episode-specific videos (trailers, promos) if available
 
-### 👤 Person Details (`/person/:id`)
+### Person Details (`/person/:id`)
 
 - Cinematic header with:
   - Profile image on the left
@@ -259,9 +259,9 @@ Includes:
 
 ---
 
-## 🧩 State & Context
+## State & Context
 
-### 🎯 `MovieContext`
+### `MovieContext`
 
 Handles:
 
@@ -272,7 +272,7 @@ Handles:
 
 Data is persisted to `localStorage`.
 
-### 🌓 `ThemeContext`
+### `ThemeContext`
 
 Handles:
 
@@ -288,7 +288,7 @@ Side effects:
 
 ---
 
-## 🔗 API Layer
+## API Layer
 
 All API calls are defined in `src/services/api.ts` and wrap TMDB endpoints with a typed helper:
 
@@ -334,7 +334,7 @@ All functions are **typed** via the `Movie.ts`, `Tv.ts`, `Person.ts`, and `Share
 
 ---
 
-## 🧪 Scripts
+## Scripts
 
 ```bash
 # Start dev server
@@ -355,7 +355,7 @@ npm run preview
 
 ---
 
-## 🧩 Potential Improvements
+## Potential Improvements
 
 - Add user authentication and allow saving favorites to a backend
 - Add filters (genre, year, language, runtime)
@@ -366,7 +366,7 @@ npm run preview
 
 ---
 
-## 🙏 Attribution
+## Attribution
 
 This product uses the TMDB API but is **not endorsed or certified** by TMDB.
 
@@ -375,7 +375,7 @@ This product uses the TMDB API but is **not endorsed or certified** by TMDB.
 
 ---
 
-## 🤝 License
+## License
 
 You can adapt this project freely for learning, interviews, and portfolio demos.  
 If you publish it publicly, please:
