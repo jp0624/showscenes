@@ -23,7 +23,7 @@ export default function SearchCard({ item }: Props) {
 	const image =
 		item.poster_path || item.profile_path
 			? tmdbPoster(item.poster_path || item.profile_path, "md")
-			: "/no-image.png";
+			: "/no-image.svg";
 
 	return (
 		<Link
@@ -54,3 +54,4 @@ export default function SearchCard({ item }: Props) {
 		</Link>
 	);
 }
+

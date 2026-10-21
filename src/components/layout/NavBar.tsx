@@ -22,7 +22,7 @@ export default function NavBar() {
 					to="/"
 					className="text-xl font-bold tracking-tight text-foreground hover:text-accent"
 				>
-					CineScope
+					ShowScenes<span className="text-accent">.</span>
 				</NavLink>
 
 				{/* Desktop Nav */}
@@ -46,7 +46,7 @@ export default function NavBar() {
 				<div className="flex items-center gap-3">
 					<ThemeToggle />
 					<button
-						className="sm:hidden text-xl"
+						aria-label="Toggle navigation" aria-expanded={open} className="sm:hidden text-xl"
 						onClick={() => setOpen((o) => !o)}
 					>
 						{open ? "✖" : "☰"}
@@ -78,3 +78,4 @@ export default function NavBar() {
 		</header>
 	);
 }
+

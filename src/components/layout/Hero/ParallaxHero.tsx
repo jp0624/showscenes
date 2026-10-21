@@ -32,6 +32,7 @@ export default function ParallaxHero({
 	children,
 }: ParallaxHeroProps) {
 	const [index, setIndex] = useState(0);
+	const [paused,setPaused]=useState(false);
 	const [colors, setColors] = useState<string[]>([]);
 	const [blackFallback, setBlackFallback] = useState<boolean[]>([]);
 	const intervalRef = useRef<number | null>(null);
@@ -93,11 +94,11 @@ export default function ParallaxHero({
     ------------------------------------------ */
 	const startAuto = useCallback(() => {
 		if (intervalRef.current) clearInterval(intervalRef.current);
- if (slides.length < 2) return;
+ if (paused || slides.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 		intervalRef.current = window.setInterval(() => {
 			setIndex((i) => (i + 1) % slides.length);
 		}, autoAdvanceMs);
-	}, [slides.length, autoAdvanceMs]);
+	}, [slides.length, autoAdvanceMs,paused]);
 
 	const stopAuto = () => {
 		if (intervalRef.current) clearInterval(intervalRef.current);
@@ -141,7 +142,7 @@ export default function ParallaxHero({
 
 	return (
 		<div
-			className="relative w-screen overflow-hidden"
+			className="relative w-full overflow-hidden"
 			onMouseDown={(e) => onStart(e.clientX)}
 			onMouseMove={(e) => onMove(e.clientX)}
 			onMouseUp={onEnd}
@@ -157,12 +158,13 @@ export default function ParallaxHero({
 						color={colors[i] || "rgb(0,0,0)"}
 						dark={blackFallback[i] || false}
 						index={i}
-						isActive={i === index}
+						isActive={i === index % Math.max(1,slides.length)}
 					>
 						{children({ slide, index: i })}
 					</HeroSlide>
 				))}
 
+				<button className="absolute top-5 right-5 z-30 rounded-full border border-white/30 bg-black/40 px-3 py-2 text-xs text-white" onClick={()=>setPaused(p=>!p)} aria-label={paused?"Play slideshow":"Pause slideshow"}>{paused?"Play":"Pause"}</button>
 				<HeroControls
 					total={slides.length}
 					current={index}
@@ -174,3 +176,4 @@ export default function ParallaxHero({
 		</div>
 	);
 }
+

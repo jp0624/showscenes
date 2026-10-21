@@ -14,7 +14,7 @@ interface Props {
 function EpisodeCard({ showId, episode, seasonNumber, className = "" }: Props) {
 	const stillUrl = episode.still_path
 		? tmdbBackdrop(episode.still_path, "md")
-		: "/no-image.png";
+		: "/no-image.svg";
 
 	return (
 		<Link
@@ -48,3 +48,4 @@ function EpisodeCard({ showId, episode, seasonNumber, className = "" }: Props) {
 }
 
 export default memo(EpisodeCard);
+

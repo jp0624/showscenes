@@ -11,14 +11,14 @@ export default function HomeHero({ slides }: Props) {
 	if (!slides || slides.length === 0) return null;
 
 	return (
-		<ParallaxHero slides={slides} autoAdvanceMs={5000} height="min-h-[60vh]">
+		<ParallaxHero slides={slides} autoAdvanceMs={5000} height="h-[580px] sm:h-[620px]">
 			{({ slide }) => (
-				<div className="max-w-3xl flex flex-col gap-4">
+				<div className="max-w-xl flex flex-col gap-4">
 					<p className="text-xs uppercase tracking-wider text-accent">
 						Trending {slide.mediaType === "tv" ? "Series" : "Movies"}
 					</p>
 
-					<h1 className="text-3xl sm:text-4xl font-bold text-white drop-shadow-lg">
+					<h1 className="text-4xl sm:text-6xl font-bold text-white drop-shadow-lg">
 						{slide.title}
 						{slide.year && (
 							<span className="ml-2 font-light text-white/80 text-2xl">
@@ -42,7 +42,7 @@ export default function HomeHero({ slides }: Props) {
 					{slide.link && (
 						<a
 							href={slide.link}
-							className="mt-4 inline-flex items-center rounded-full bg-accent px-4 py-2 text-white font-semibold hover:bg-accent-soft transition"
+							className="mt-4 inline-flex items-center rounded-full bg-accent px-6 py-3 text-white font-semibold hover:bg-accent-soft transition"
 						>
 							View Details
 						</a>
@@ -54,3 +54,4 @@ export default function HomeHero({ slides }: Props) {
 }
 
 export type Mode = "movie" | "tv";
+

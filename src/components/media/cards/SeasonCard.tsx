@@ -13,7 +13,7 @@ export default function SeasonCard({ showId, season }: Props) {
 	const title = season.name ?? `Season ${season.season_number}`;
 	const poster = season.poster_path
 		? tmdbPoster(season.poster_path, "md")
-		: "/no-image.png";
+		: "/no-image.svg";
 
 	function onHover() {
 		preload(() => getTvSeason(showId, season.season_number));
@@ -42,3 +42,4 @@ export default function SeasonCard({ showId, season }: Props) {
 		</Link>
 	);
 }
+

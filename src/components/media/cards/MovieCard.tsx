@@ -23,7 +23,7 @@ export default function MovieCard({ item, mediaType = "movie", className = "" }:
 
 	const posterUrl = item.poster_path
 		? tmdbPoster(item.poster_path, "md")
-		: "/no-image.png";
+		: "/no-image.svg";
 
 	const vote = (item as any).vote_average as number | undefined;
 
@@ -66,3 +66,4 @@ export default function MovieCard({ item, mediaType = "movie", className = "" }:
 		</Link>
 	);
 }
+

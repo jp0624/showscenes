@@ -12,8 +12,8 @@ interface HeroSlideProps {
 
 export default function HeroSlide({
 	image,
-	color,
-	dark,
+	color: _color,
+	dark: _dark,
 	isActive,
 	children,
 }: HeroSlideProps) {
@@ -23,7 +23,7 @@ export default function HeroSlide({
                 absolute inset-0 transition-opacity duration-[900ms]
                 ${isActive ? "opacity-100" : "opacity-0"}
             `}
-			style={{
+			aria-hidden={!isActive} inert={!isActive} style={{
 				zIndex: isActive ? 2 : 1,
 			}}
 		>
@@ -40,10 +40,7 @@ export default function HeroSlide({
 				<div
 					className="absolute inset-0"
 					style={{
-						background: dark
-							? "rgba(0,0,0,0.72)"
-							: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.80)), ${color}`,
-						mixBlendMode: "multiply",
+						background: "linear-gradient(90deg,rgba(8,8,15,.92),rgba(8,8,15,.45) 55%,rgba(8,8,15,.1)),linear-gradient(0deg,rgba(8,8,15,.5),transparent 50%)",
 					}}
 				/>
 			</div>
@@ -55,3 +52,4 @@ export default function HeroSlide({
 		</div>
 	);
 }
+

@@ -13,7 +13,7 @@ export default function TvCard({ show }: Props) {
 	const title = show.name ?? "(Untitled)";
 	const poster = show.poster_path
 		? tmdbPoster(show.poster_path, "md")
-		: "/no-image.png";
+		: "/no-image.svg";
 
 	function onHover() {
 		if (id) preload(() => getTv(id));
@@ -42,3 +42,4 @@ export default function TvCard({ show }: Props) {
 		</Link>
 	);
 }
+

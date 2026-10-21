@@ -23,6 +23,7 @@ interface HomeGridProps {
 }
 
 export default function HomeGrid({ mode, query }: HomeGridProps) {
+	const [error,setError]=useState('');
 	const [items, setItems] = useState<(Movie | TvShow)[]>([]);
 	const [page, setPage] = useState(1);
 	const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,7 @@ export default function HomeGrid({ mode, query }: HomeGridProps) {
 		const load = async () => {
 			if (!hasMore) return;
 
-			setIsLoading(true);
+			setIsLoading(true);setError('');
 
 			try {
 				const currentPage = page;
@@ -81,8 +82,8 @@ export default function HomeGrid({ mode, query }: HomeGridProps) {
 				if (!isInitialLoadDone) setIsInitialLoadDone(true);
 			} catch (err) {
 				// Avoid killing the UI if TMDB throws (e.g. 404, quota, etc.)
-				console.error("[HomeGrid] Failed to load items:", err);
-				setHasMore(false);
+				console.error("[HomeGrid] Failed to load items:", err);if(!cancelled)setError("We couldn’t load these titles. Please try again.");
+				if(!cancelled)setHasMore(false);
 			} finally {
 				if (!cancelled) setIsLoading(false);
 			}
@@ -118,6 +119,7 @@ export default function HomeGrid({ mode, query }: HomeGridProps) {
 
 	return (
 		<>
+			<div aria-live="polite">{error&&<p role="alert" className="mt-8 rounded-xl border border-token bg-surface p-5">{error} <button className="underline" onClick={()=>window.location.reload()}>Retry</button></p>}{!error&&!isLoading&&items.length===0&&<p className="py-12 text-muted">No titles found. Try another search.</p>}</div>
 			<MovieGrid movies={items} mediaType={mode} className="mt-6" />
 
 			{isLoading && items.length > 0 && (
@@ -133,3 +135,4 @@ export default function HomeGrid({ mode, query }: HomeGridProps) {
 		</>
 	);
 }
+

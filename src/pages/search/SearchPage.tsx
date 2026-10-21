@@ -4,7 +4,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import useDebounce from "../../hooks/useDebounce";
-import { searchMulti } from "../../services/api";
+import { searchMulti, getMovie, getTv, getPerson } from "../../services/api";
 import { useAISuggestions } from "../../hooks/useAISuggestions";
 import { useTmdbPreload } from "../../hooks/useTmdbPreload";
 
@@ -42,10 +42,10 @@ export default function SearchPage() {
 	const suggestions = useAISuggestions(query);
 	const preload = useTmdbPreload((item: MultiResult) => {
 		if (!item) return;
-		return import("../../services/api").then<unknown>((m) => {
-			if (item.media_type === "movie") return m.getMovie(item.id);
-			if (item.media_type === "tv") return m.getTv(item.id);
-			return m.getPerson(item.id);
+		return Promise.resolve().then<unknown>(() => {
+			if (item.media_type === "movie") return getMovie(item.id);
+			if (item.media_type === "tv") return getTv(item.id);
+			return getPerson(item.id);
 		});
 	});
 
@@ -193,7 +193,7 @@ export default function SearchPage() {
 
 					{suggestions.length > 0 && (
 						<Surface>
-							<SectionHeader title="Suggestions" eyebrow="AI-style ideas" />
+							<SectionHeader title="Suggestions" eyebrow="Try something new" />
 							<div className="flex flex-col gap-2 text-sm">
 								{suggestions.map((s) => (
 									<button
@@ -316,3 +316,4 @@ export default function SearchPage() {
 		</motion.div>
 	);
 }
+

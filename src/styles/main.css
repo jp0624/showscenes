@@ -1,6 +1,9 @@
 /* src/styles/main.css */
 @import "tailwindcss";
 
+@theme inline {
+ --color-background:var(--bg);--color-surface:var(--bg-elevated);--color-surface-alt:var(--bg-elevated-soft);--color-foreground:var(--fg);--color-muted:var(--fg-muted);--color-accent:var(--accent);--color-accent-soft:var(--accent-soft);--color-token:var(--border-subtle);
+}
 /* -----------------------------------------
    THEME TOKENS (Cinematic-first)
    Applied via data-theme on <html>
@@ -301,3 +304,11 @@ body {
 .shadow-card {
 	box-shadow: var(--shadow-soft);
 }
+
+
+:root,html[data-theme="dark"]{--bg:#101016;--bg-elevated:#1b1b25;--bg-elevated-soft:#242432;--border-subtle:#353543;--fg-muted:#b0b0c1;--accent:#e97550;--accent-soft:#f59b7d;--accent-strong:#d05c38;color-scheme:dark;font-family:Arial,Helvetica,sans-serif}
+html[data-theme="light"]{--bg:#f6f3ef;--bg-elevated:#fff;--bg-elevated-soft:#ece7e2;--border-subtle:#d6cfc7;--accent:#b44424;--accent-soft:#c45838;color-scheme:light}
+.card-shell{background:var(--bg-elevated);box-shadow:none;border-radius:12px}.card-shell::before{display:none}.card-shell-meta{position:relative;left:auto;right:auto;bottom:auto;padding:12px;gap:8px}.card-pill{width:fit-content;background:var(--bg-elevated-soft);color:var(--fg);font-weight:700}.card-shell:hover{box-shadow:0 12px 26px #0002;transform:translateY(-4px);border-color:var(--accent)}
+.hero-backdrop::before{background:linear-gradient(90deg,#000c,#0003)}
+select,input{color:var(--fg);background:var(--bg-elevated)}select option{background:var(--bg-elevated);color:var(--fg)}button,a,input,select{outline-offset:4px} :focus-visible{outline:2px solid var(--accent)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.card-shell:hover{transform:none}}

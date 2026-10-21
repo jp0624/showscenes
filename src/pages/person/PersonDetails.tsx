@@ -36,7 +36,7 @@ export default function PersonDetails() {
 				id: person.id,
 				backdropUrl: person.profile_path
 					? `https://image.tmdb.org/t/p/original${person.profile_path}`
-					: "/no-image.png",
+					: "/no-image.svg",
 				title: person.name,
 				overview: person.biography,
 				mediaType: "person",
@@ -101,3 +101,4 @@ export default function PersonDetails() {
 		</motion.div>
 	);
 }
+

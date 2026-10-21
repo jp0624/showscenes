@@ -13,7 +13,7 @@ export default function PersonCard({ person }: Props) {
 	const name = person.name ?? "(Unknown)";
 	const poster = person.profile_path
 		? tmdbPoster(person.profile_path, "md")
-		: "/no-image.png";
+		: "/no-image.svg";
 
 	function onHover() {
 		if (id) preload(() => getPerson(id));
@@ -42,3 +42,4 @@ export default function PersonCard({ person }: Props) {
 		</Link>
 	);
 }
+

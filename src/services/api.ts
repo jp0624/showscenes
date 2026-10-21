@@ -57,13 +57,13 @@ async function fetchJson<T>(path: string, params?: any): Promise<T> {
 		if (!res.ok) {
 			// return empty object instead of crashing
 			console.warn("TMDB error", res.status, full);
-			return {} as T;
+			throw new Error("Film data could not be loaded. Please try again.");
 		}
 
 		return (await res.json()) as T;
 	} catch (err) {
 		console.error("TMDB fetch failed:", err);
-		return {} as T;
+		throw new Error("Film data could not be loaded. Please try again.");
 	}
 }
 
@@ -199,3 +199,4 @@ export const searchMulti = (query: string, page = 1) =>
 --------------------------------------------- */
 export const getTrendingAll = (page = 1) =>
 	fetchJson<PagedResponse<Movie | TvShow>>("/trending/all/week", { page });
+
