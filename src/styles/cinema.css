@@ -1,0 +1,74 @@
+/* A film-library treatment built around real poster and backdrop artwork. */
+.cinema-app {
+  background-image: radial-gradient(ellipse 65% 420px at 12% 800px, color-mix(in srgb, var(--accent) 5%, transparent), transparent);
+}
+.cinema-surface {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--bg-elevated) 94%, var(--accent)), var(--bg-elevated) 48%);
+  border-color: color-mix(in srgb, var(--border-subtle) 65%, transparent);
+  box-shadow: 0 12px 35px #00000010, inset 0 1px 0 #ffffff06;
+  border-radius: 20px;
+}
+.cinema-section-heading { position: relative; padding-left: 16px; margin-bottom: 22px; }
+.cinema-section-heading::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 3px; width: 3px; border-radius: 3px; background: var(--accent); }
+.cinema-section-heading > p { font-size: 9px; letter-spacing: 2px; color: var(--fg-muted); margin-bottom: 6px; }
+.cinema-section-heading > h2 { font-size: 23px; font-weight: 550; letter-spacing: -.6px; }
+.cinema-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 80%, transparent);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  box-shadow: 0 5px 15px #00000016;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+  isolation: isolate;
+}
+.cinema-card-art { position: relative; aspect-ratio: 2 / 3; overflow: hidden; background: #09090d; }
+.cinema-card-art > img { display: block; width: 100%; height: 100%; object-fit: contain; transition: filter 220ms ease; }
+.cinema-card-art::after { content: ""; pointer-events: none; position: absolute; inset: 0; background: linear-gradient(180deg, #0005, transparent 24%, transparent 78%, #0003); }
+.cinema-card-kind, .cinema-card-rating { position: absolute; top: 10px; z-index: 1; padding: 5px 7px; border-radius: 5px; color: #fff; background: #08090bc9; border: 1px solid #ffffff24; backdrop-filter: blur(8px); font-size: 8px; line-height: 1; }
+.cinema-card-kind { left: 10px; letter-spacing: 1.3px; text-transform: uppercase; }
+.cinema-card-rating { right: 10px; font-size: 10px; font-variant-numeric: tabular-nums; }
+.cinema-card-rating > span { color: #f6cc7d; margin-right: 2px; }
+.cinema-card-invite { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -35%); display: flex; align-items: center; gap: 14px; padding: 11px 15px; border: 1px solid #ffffff50; border-radius: 30px; color: white; background: #08090bb8; backdrop-filter: blur(10px); font-size: 10px; opacity: 0; transition: opacity 180ms ease, transform 180ms ease; pointer-events: none; }
+.cinema-card-invite > b { font-size: 16px; font-weight: 400; }
+.cinema-card-copy { position: relative; padding: 14px 29px 14px 12px; min-height: 85px; border-top: 1px solid color-mix(in srgb, var(--border-subtle) 65%, transparent); background: linear-gradient(145deg, color-mix(in srgb, var(--bg-elevated-soft) 50%, var(--bg-elevated)), var(--bg-elevated)); }
+.cinema-card-copy > h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; font-size: 13px; line-height: 1.35; font-weight: 600; color: var(--fg); letter-spacing: -.1px; min-height: 35px; }
+.cinema-card-copy > p { margin: 8px 0 0; font-size: 9px; line-height: 1.4; color: var(--fg-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cinema-card-corner { position: absolute; right: 11px; top: 15px; font-size: 15px; color: var(--fg-muted); }
+.cinema-card:hover, .cinema-card:focus-visible { border-color: color-mix(in srgb, var(--accent) 65%, var(--border-subtle)); box-shadow: 0 9px 25px #00000035; }
+.cinema-card:hover .cinema-card-corner, .cinema-card:focus-visible .cinema-card-corner { color: var(--accent); }
+.cinema-card:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.cinema-card:focus-visible .cinema-card-invite { opacity: 1; transform: translate(-50%, -50%); }
+@media (hover: hover) {
+  .cinema-card:hover .cinema-card-invite { opacity: 1; transform: translate(-50%, -50%); }
+  .cinema-card:hover .cinema-card-art > img { filter: brightness(.85); }
+}
+.cinema-video-card { overflow: hidden; border: 1px solid var(--border-subtle); border-radius: 13px; background: var(--bg-elevated); box-shadow: 0 7px 22px #00000020; }
+.cinema-video-screen { aspect-ratio: 16 / 9; background: #050507; }
+.video-carousel .cinema-video-screen > iframe { width: 100%; height: 100%; border: 0; border-radius: 0; }
+.cinema-video-copy { padding: 15px 18px 18px; background: linear-gradient(130deg, var(--bg-elevated-soft), var(--bg-elevated)); border-top: 1px solid var(--border-subtle); }
+.cinema-video-copy > span { font-size: 8px; text-transform: uppercase; letter-spacing: 1.7px; color: var(--accent); }
+.cinema-video-copy > h3 { margin: 7px 0 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: var(--fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.media-gallery-rail { padding-top: 6px; }
+.media-gallery-card { border-radius: 11px; border-color: var(--border-subtle); box-shadow: 0 5px 12px #00000020; }
+.media-gallery-card > img { object-fit: contain; }
+.media-gallery-card > span { padding: 24px 14px 12px; font-size: 9px; letter-spacing: 1.4px; text-transform: uppercase; }
+.media-gallery-scroll-controls button { background: var(--bg-elevated-soft); border-color: var(--border-subtle); }
+@media(max-width:600px) {
+  .cinema-surface { border-radius: 15px; }
+  .cinema-card-kind { top: 7px; left: 7px; font-size: 7px; padding: 4px 5px; }
+  .cinema-card-rating { top: 7px; right: 7px; padding: 4px 5px; font-size: 9px; }
+  .cinema-card-copy { padding: 12px 23px 12px 10px; min-height: 85px; }
+  .cinema-card-copy > h3 { font-size: 12px; line-height: 1.4; }
+  .cinema-card-copy > p { font-size: 9px; }
+  .cinema-card-corner { right: 8px; top: 12px; font-size: 13px; }
+  .cinema-video-copy { padding: 12px 14px; }
+  .cinema-video-copy > h3 { font-size: 12px; }
+  .cinema-section-heading > h2 { font-size: 21px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .cinema-card, .cinema-card-art > img, .cinema-card-invite { transition: none; }
+}
+.cinema-card--still .cinema-card-art { aspect-ratio: 16 / 9; }

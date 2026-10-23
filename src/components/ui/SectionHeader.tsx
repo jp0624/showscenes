@@ -11,7 +11,7 @@ export default function SectionHeader({
 	className = "",
 }: SectionHeaderProps) {
 	return (
-		<header className={`mb-4 ${className}`}>
+		<header className={`cinema-section-heading mb-4 ${className}`}>
 			{eyebrow && (
 				<p className="text-xs uppercase tracking-wide text-muted mb-1">
 					{eyebrow}

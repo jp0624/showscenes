@@ -1,57 +1,24 @@
-// src/components/media/cards/SearchCard.tsx
-import { Link } from "react-router-dom";
 import { preload } from "../../../hooks/useTmdbPreload";
 import { getMovie, getTv, getPerson } from "../../../services/api";
 import { tmdbPoster } from "../../../utils/tmdbImage";
-
-interface Props {
-	item: any; // movie | tv | person
+import CinemaCard from "./CinemaCard";
+interface SearchItem {
+  id: number; media_type: "movie" | "tv" | "person"; title?: string; name?: string;
+  poster_path?: string | null; profile_path?: string | null; vote_average?: number;
+  release_date?: string; first_air_date?: string; known_for_department?: string;
 }
-
-export default function SearchCard({ item }: Props) {
-	const type = item.media_type;
-	const id = item.id;
-
-	function onHover() {
-		if (type === "movie") preload(() => getMovie(id));
-		else if (type === "tv") preload(() => getTv(id));
-		else if (type === "person") preload(() => getPerson(id));
-	}
-
-	const displayTitle = item.title || item.name || "(Untitled)";
-
-	const image =
-		item.poster_path || item.profile_path
-			? tmdbPoster(item.poster_path || item.profile_path, "md")
-			: "/no-image.svg";
-
-	return (
-		<Link
-			to={
-				type === "movie"
-					? `/movie/${id}`
-					: type === "tv"
-					? `/tv/${id}`
-					: `/person/${id}`
-			}
-			onMouseEnter={onHover}
-			className="group relative overflow-hidden rounded-xl bg-black aspect-[2/3] border border-token"
-		>
-			<img
-				src={image}
-				className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] group-hover:brightness-90"
-				loading="lazy"
-				alt={displayTitle}
-			/>
-
-			<div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-
-			<div className="absolute bottom-3 left-3 opacity-90 group-hover:opacity-100 transition">
-				<h3 className="text-sm font-semibold text-white drop-shadow-md line-clamp-2">
-					{displayTitle}
-				</h3>
-			</div>
-		</Link>
-	);
+export default function SearchCard({ item }: { item: SearchItem }) {
+  const type = item.media_type;
+  function onIntent() {
+    if (type === "movie") preload(() => getMovie(item.id));
+    else if (type === "tv") preload(() => getTv(item.id));
+    else if (type === "person") preload(() => getPerson(item.id));
+  }
+  const path = item.poster_path || item.profile_path;
+  const kind = type === "movie" ? "Film" : type === "tv" ? "Series" : "Person";
+  const year = (item.release_date || item.first_air_date)?.slice(0, 4);
+  return <CinemaCard to={`/${type}/${item.id}`} title={item.title || item.name || "Untitled"}
+    image={path ? tmdbPoster(path, "md") : "/no-image.svg"} kind={kind}
+    detail={type === "person" ? item.known_for_department || "View profile" : [year, kind].filter(Boolean).join(" · ")}
+    rating={item.vote_average} onIntent={onIntent} />;
 }
-

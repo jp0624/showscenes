@@ -1,5 +1,6 @@
 /* src/styles/main.css */
 @import "tailwindcss";
+@import "./cinema.css";
 
 @theme inline {
  --color-background:var(--bg);--color-surface:var(--bg-elevated);--color-surface-alt:var(--bg-elevated-soft);--color-foreground:var(--fg);--color-muted:var(--fg-muted);--color-accent:var(--accent);--color-accent-soft:var(--accent-soft);--color-token:var(--border-subtle);

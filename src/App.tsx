@@ -28,7 +28,7 @@ import SearchPage from "./pages/search/SearchPage";
 export default function App() {
 	return (
 		<>
-			<div className="min-h-screen bg-background text-foreground">
+			<div className="cinema-app min-h-screen bg-background text-foreground">
 				<NavBar />
 
 				<ErrorBoundary>

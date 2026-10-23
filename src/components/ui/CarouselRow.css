@@ -15,7 +15,7 @@
 .cast-carousel .media-gallery-rail > div > a {
   display: block;
   width: 100%;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: auto;
 }
 .cast-carousel .media-gallery-rail img {
   display: block;
