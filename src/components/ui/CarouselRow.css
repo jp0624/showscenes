@@ -29,3 +29,26 @@
   height: auto;
   aspect-ratio: 16 / 9;
 }
+
+/* Tablet portraits stay readable without making the row excessively tall. */
+@media (min-width: 768px) {
+  .cast-carousel .media-gallery-rail > div {
+    flex-basis: calc((100% - 56px) / 4.2);
+  }
+}
+
+/* Two trailers retain legible player controls; cast can use smaller cards. */
+@media (min-width: 1024px) {
+  .cast-carousel .media-gallery-rail > div {
+    flex-basis: calc((100% - 70px) / 5.25);
+  }
+  .video-carousel .media-gallery-rail > div {
+    flex-basis: calc((100% - 28px) / 2.15);
+  }
+}
+
+@media (min-width: 1280px) {
+  .cast-carousel .media-gallery-rail > div {
+    flex-basis: calc((100% - 84px) / 6.25);
+  }
+}
