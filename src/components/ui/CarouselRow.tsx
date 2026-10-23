@@ -1,5 +1,6 @@
 import { Children, useId, useRef, type ReactNode } from "react";
 import "../media/info/ImageGallery.css";
+import "./CarouselRow.css";
 
 interface Props<T> {
   items?: T[];

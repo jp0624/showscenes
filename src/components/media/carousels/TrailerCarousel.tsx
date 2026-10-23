@@ -11,10 +11,11 @@ export default function TrailerCarousel({ videos }: Props) {
 	return (
 		<CarouselRow
 			items={videos}
-			itemWidth={320}
+			className="video-carousel"
 			renderItem={(v) => (
 				<iframe
 					key={v.id}
+					title={v.name || "Video trailer"}
 					src={`https://www.youtube.com/embed/${v.key}`}
 					className="aspect-video w-full rounded-xl border border-token bg-black"
 					loading="lazy"

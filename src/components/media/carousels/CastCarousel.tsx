@@ -13,7 +13,7 @@ export default function CastCarousel({ cast }: Props) {
 		<CarouselRow
 			items={cast}
 			renderItem={(person) => <PersonCard person={person} />}
-			itemWidth={150}
+			className="cast-carousel"
 		/>
 	);
 }
