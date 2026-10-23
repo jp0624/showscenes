@@ -119,6 +119,7 @@ export default function MovieDetails() {
 					<Surface>
 						<SectionHeader title="Images" eyebrow="Gallery" />
 						<ImageGallery
+							title={movie.title}
 							backdrops={images.backdrops ?? []}
 							posters={images.posters ?? []}
 							logos={images.logos ?? []}

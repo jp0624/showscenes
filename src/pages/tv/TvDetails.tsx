@@ -107,6 +107,7 @@ export default function TvDetails() {
 					<Surface>
 						<SectionHeader title="Images" eyebrow="Gallery" />
 						<ImageGallery
+							title={show.name}
 							backdrops={images.backdrops ?? []}
 							posters={images.posters ?? []}
 							logos={images.logos ?? []}
